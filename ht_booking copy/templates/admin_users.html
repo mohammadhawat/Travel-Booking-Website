@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>👥 Manage Users</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <form method="POST">
+            <input type="hidden" name="user_id" value="{{ user[0] }}">
+            <td>{{ user[0] }}</td>
+            <td><input type="text" name="name" value="{{ user[1] }}"></td>
+            <td><input type="email" name="email" value="{{ user[2] }}"></td>
+            <td><button type="submit">💾 Save</button></td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+
+{% if message %}
+    <p style="color: green; font-weight: bold;">{{ message }}</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,45 @@
+# Horizon Travels – Run Instructions
+Student Name: Mohammad Hawat
+Student ID: 24056361
+
+---
+
+## 1. How to run the website:
+
+1. Create a virtual environment:
+   python3 -m venv venv
+   source venv/bin/activate
+
+2. Install required packages:
+   pip install -r requirements.txt
+
+3. Start MySQL and create the database:
+   mysql -u root -p
+   CREATE DATABASE ht_booking_db;
+
+4. Import data:
+   mysql -u root -p ht_booking_db < journeys_backup.sql
+
+5. Run the app:
+   python app.py
+
+6. Open in browser: http://127.0.0.1:5000
+
+---
+
+## 2. Demo Login Credentials
+
+Standard User:
+- Email: user1@email.com
+- Password: user123
+
+Admin:
+- Username: admin
+- Password: admin123
+
+---
+
+## 3. Notes
+
+- Admin login is protected via session and separate route
+- All journeys, bookings, and users update live in the database

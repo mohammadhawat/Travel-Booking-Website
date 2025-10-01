@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>🎟️ Booking Confirmation</h2>
+
+<div class="ticket">
+    <p><strong>From:</strong> {{ booking.origin }}</p>
+    <p><strong>To:</strong> {{ booking.destination }}</p>
+    <p><strong>Departure:</strong> {{ booking.departure_time }}</p>
+    <p><strong>Arrival:</strong> {{ booking.arrival_time }}</p>
+    <p><strong>Class:</strong> {{ booking.travel_class }}</p>
+    <p><strong>Fare per Seat:</strong> £{{ booking.fare }}</p>
+    <p><strong>Seats Booked:</strong> {{ booking.seats_booked }}</p>
+    <p><strong>Total Cost:</strong> <strong>£{{ booking.total }}</strong></p>
+    <p><strong>Booked At:</strong> {{ booking.booking_time }}</p>
+
+    <br>
+    <button onclick="window.print()">🖨️ Print or Save as PDF</button>
+    <br><br>
+    <a href="/emailpreview">📩 View Email Confirmation</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>✈️ Search & Book a Journey</h2>
+
+<form method="POST">
+    <label for="filter_day">Filter by Day:</label>
+    <select name="filter_day">
+        <option value="">All</option>
+        <option value="Mon" {% if selected_day == 'Mon' %}selected{% endif %}>Mon</option>
+        <option value="Tue" {% if selected_day == 'Tue' %}selected{% endif %}>Tue</option>
+        <option value="Wed" {% if selected_day == 'Wed' %}selected{% endif %}>Wed</option>
+        <option value="Thu" {% if selected_day == 'Thu' %}selected{% endif %}>Thu</option>
+        <option value="Fri" {% if selected_day == 'Fri' %}selected{% endif %}>Fri</option>
+    </select>
+
+    <label for="filter_class">Filter by Class:</label>
+    <select name="filter_class">
+        <option value="">All</option>
+        <option value="Economy" {% if selected_class == 'Economy' %}selected{% endif %}>Economy</option>
+        <option value="Business" {% if selected_class == 'Business' %}selected{% endif %}>Business</option>
+    </select>
+
+    <button type="submit">🔍 Search</button>
+</form>
+
+{% if journeys %}
+    <h3>Available Journeys</h3>
+    <form method="POST">
+        <table>
+            <tr>
+                <th>Select</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Fare</th>
+                <th>Class</th>
+            </tr>
+            {% for j in journeys %}
+            <tr>
+                <td><input type="radio" name="journey_id" value="{{ j[0] }}" required></td>
+                <td>{{ j[1] }}</td>
+                <td>{{ j[2] }}</td>
+                <td>{{ j[3] }}</td>
+                <td>{{ j[4] }}</td>
+                <td>£{{ j[5] }}</td>
+                <td>{{ j[6] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <label for="seats">Seats to Book:</label>
+        <input type="number" name="seats" min="1" required>
+        <button type="submit">✅ Confirm Booking</button>
+    </form>
+{% else %}
+    <p>No journeys match your filters. Try again.</p>
+{% endif %}
+{% endblock %}

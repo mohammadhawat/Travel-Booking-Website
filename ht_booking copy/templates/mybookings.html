@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>📚 My Bookings</h2>
+
+{% if bookings %}
+    <table>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Class</th>
+            <th>Fare</th>
+            <th>Seats</th>
+            <th>Total</th>
+            <th>Booked At</th>
+            <th>Action</th>
+        </tr>
+        {% for b in bookings %}
+        <tr>
+            <td>{{ b[1] }}</td>
+            <td>{{ b[2] }}</td>
+            <td>{{ b[3] }}</td>
+            <td>{{ b[4] }}</td>
+            <td>{{ b[6] }}</td>
+            <td>£{{ b[5] }}</td>
+            <td>{{ b[7] }}</td>
+            <td>£{{ b[5] * b[7] }}</td>
+            <td>{{ b[8] }}</td>
+            <td><a href="/cancelbooking/{{ b[0] }}" class="btn-cancel">Cancel</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>You haven’t booked anything yet.</p>
+{% endif %}
+
+{% endblock %}

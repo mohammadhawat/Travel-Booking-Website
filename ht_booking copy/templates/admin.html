@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>📋 Admin Dashboard — All Bookings</h2>
+
+{% if bookings %}
+    <table>
+        <tr>
+            <th>User</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Fare</th>
+            <th>Class</th>
+            <th>Seats</th>
+            <th>Total</th>
+            <th>Booked At</th>
+        </tr>
+        {% for b in bookings %}
+        <tr>
+            <td>{{ b[0] }}</td>
+            <td>{{ b[1] }}</td>
+            <td>{{ b[2] }}</td>
+            <td>{{ b[3] }}</td>
+            <td>{{ b[4] }}</td>
+            <td>£{{ b[5] }}</td>
+            <td>{{ b[6] }}</td>
+            <td>{{ b[7] }}</td>
+            <td>£{{ b[5] * b[7] }}</td>
+            <td>{{ b[8] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No bookings yet.</p>
+{% endif %}
+{% endblock %}

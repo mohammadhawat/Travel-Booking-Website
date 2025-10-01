@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>📊 Admin Reports</h2>
+
+<h3>🚏 Top 5 Popular Routes</h3>
+{% if popular_routes %}
+    <table>
+        <tr>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Total Bookings</th>
+        </tr>
+        {% for route in popular_routes %}
+        <tr>
+            <td>{{ route[0] }}</td>
+            <td>{{ route[1] }}</td>
+            <td>{{ route[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No route data yet.</p>
+{% endif %}
+
+<br><br>
+
+<h3>👥 Top 5 Frequent Users</h3>
+{% if top_users %}
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Bookings</th>
+        </tr>
+        {% for user in top_users %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No user data yet.</p>
+{% endif %}
+
+<br><br>
+
+<h3>💷 Total Revenue</h3>
+<p style="font-size: 18px;"><strong>£{{ total_revenue }}</strong></p>
+
+{% endblock %}

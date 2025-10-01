@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Horizon Travels</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/book">Book a Trip</a></li>
+            <li><a href="/register">Register</a></li>
+
+            {% if user %}
+                <li><a href="/mybookings">My Bookings</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout ({{ user }})</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+            {% endif %}
+
+            {% if session.admin %}
+                <li><a href="/admin">Dashboard</a></li>
+                <li><a href="/admin/reports">Reports</a></li>
+                <li><a href="/admin/passwords">Passwords</a></li>
+                <li><a href="/admin/journeys">Journeys</a></li>
+                <li><a href="/admin/users">Users</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

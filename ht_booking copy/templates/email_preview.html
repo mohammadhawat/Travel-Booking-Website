@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>📩 Email Preview</h2>
+
+<p>This is a simulated email you would have received after booking:</p>
+
+<div class="ticket">
+    <p>Hi {{ user }},</p>
+    <p>Thank you for booking your journey with <strong>Horizon Travels</strong>.</p>
+    <p>Here are your booking details:</p>
+
+    <ul>
+        <li><strong>From:</strong> {{ booking.origin }}</li>
+        <li><strong>To:</strong> {{ booking.destination }}</li>
+        <li><strong>Departure:</strong> {{ booking.departure_time }}</li>
+        <li><strong>Arrival:</strong> {{ booking.arrival_time }}</li>
+        <li><strong>Class:</strong> {{ booking.travel_class }}</li>
+        <li><strong>Seats Booked:</strong> {{ booking.seats_booked }}</li>
+        <li><strong>Total Cost:</strong> £{{ booking.total }}</li>
+        <li><strong>Booking Time:</strong> {{ booking.booking_time }}</li>
+    </ul>
+
+    <p>We hope you enjoy your journey!</p>
+    <p>— The Horizon Travels Team</p>
+</div>
+
+<a href="/">⬅️ Back to Home</a>
+{% endblock %}
